@@ -16,7 +16,7 @@ void init() {
     cat.adjustCenter(true);
     cat.generateBuffers();
     shader.loadShader((resPath.string() + "/test.vert").c_str(), (resPath.string() + "/test.frag").c_str());
-    camera.setPosition({-2, 0, 0});
+    camera.setPosition({0, 0, 2});
     camera.glfwSetCallbacks(window->getGLFWWindow());
 
 
@@ -41,6 +41,8 @@ void render() {
 
     shader.use();
     shader.setUniform("NormalMat", glm::mat3(MV[0], MV[1], MV[2]));
+    shader.setUniform("V", V);
+    shader.setUniform("MV", MV);
     shader.setUniform("MVP", P * MV);
     glErr("after set uniforms");
 
