@@ -7,10 +7,12 @@ uniform mat4 MVP;
 uniform mat4 MV;
 uniform mat3 NormalMat;
 
+out vec3 WNormal;
 out vec3 VNormal;
 out vec4 VPos;
 
 void main() {
+    WNormal = Normal;
     VNormal = NormalMat * Normal;
     vec4 pos4 = vec4(Position, 1);
     VPos = MV * pos4;

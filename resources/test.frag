@@ -3,11 +3,15 @@
 
 in vec3 VNormal;
 in vec4 VPos;
+in vec3 WNormal;
 
 out vec4 FragColor;
 
+uniform int mode;
+uniform vec4 pColor;
+
 uniform mat4 V;
-uniform vec3 lightPosition = vec3(10, 10, 5);
+uniform vec3 lightPosition = vec3(10, 10, -5);
 uniform vec3 lightColor = vec3(160);
 uniform vec3 diffuseColor = vec3(1);
 uniform vec3 specularColor = vec3(0.3);
@@ -31,5 +35,7 @@ vec4 phong() {
 }
 
 void main() {
-    FragColor = phong();
+    if(mode == 0) FragColor = phong();
+    else if(mode == 1) FragColor = pColor;
+    else if(mode == 2) FragColor = vec4(WNormal, 1);
 }
