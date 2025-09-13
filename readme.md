@@ -11,6 +11,8 @@
 
 ## References
 
-- [link1](https://github.com/Golevka/deformation-transfer/tree/master)
+- [Implementation 1](https://github.com/Golevka/deformation-transfer/tree/master)
 
-- [link2](https://github.com/mickare/Deformation-Transfer-for-Triangle-Meshes/tree/master)
+- [Implementation 2](https://github.com/mickare/Deformation-Transfer-for-Triangle-Meshes/tree/master)
+
+- [Paper Info](https://people.csail.mit.edu/sumner/research/deftransfer/)
