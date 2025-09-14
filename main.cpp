@@ -979,7 +979,21 @@ void deformationTransfer(const std::string& srcObjParentPath, const std::string&
     std::cout << "--- System solved ---" << std::endl;
 
     tarDeformed = tarOriginal;
-    for(int i = 0; i < tarDeformed.nVertices; i++) tarDeformed.vertices[i] = {x(i*3), x(i*3+1), x(i*3+2)};
+    const double big = 987654321;
+    double minY = big;
+    double maxX = -big, minX = big; 
+    double maxZ = -big, minZ = big;
+    for(int i = 0; i < tarDeformed.nVertices; i++) {
+        minX = minX > x(i*3) ? x(i*3) : minX;
+        maxX = maxX < x(i*3) ? x(i*3) : maxX;
+        minY = minY > x(i*3+1) ? x(i*3+1) : minY;
+        minZ = minZ > x(i*3+2) ? x(i*3+2) : minZ;
+        maxZ = maxZ < x(i*3+2) ? x(i*3+2) : maxZ;
+    }
+    double centerX = (maxX+minX)/2;
+    double centerZ = (maxZ+minZ)/2;
+    for(int i = 0; i < tarDeformed.nVertices; i++) tarDeformed.vertices[i] = {x(i*3)-centerX, x(i*3+1)-minY, x(i*3+2)-centerZ};
+    
     vector<Vector3d> normals(tarDeformed.nSyncedNormals);
     for(int i = 0; i < tarDeformed.nElements3; i++) {
         auto face = tarDeformed.elements3[i];
@@ -1020,8 +1034,8 @@ void init() {
 
     // prepareCorrespondence(catPath.string(), "cat-reference.obj", lionPath.string(), "lion-reference.obj", marker_CatLion, "correspondence-cat-lion.txt");
     // prepareCorrespondence(horsePath.string(), "horse-gallop-reference.obj", camelPath.string(), "camel-gallop-reference.obj", marker_HorseCamel, "correspondence-horse-camel.txt");
-    // deformationTransfer(catPath.string(), "cat-reference.obj", catPath.string(), "cat-05.obj", lionPath.string(), "lion-reference.obj",  "correspondence-cat-lion.txt");
-    deformationTransfer(horsePath.string(), "horse-gallop-reference.obj", horsePath.string(), "horse-gallop-01.obj", camelPath.string(), "camel-gallop-reference.obj",  "correspondence-horse-camel.txt");
+    deformationTransfer(catPath.string(), "cat-reference.obj", catPath.string(), "cat-05.obj", lionPath.string(), "lion-reference.obj",  "correspondence-cat-lion.txt");
+    // deformationTransfer(horsePath.string(), "horse-gallop-reference.obj", horsePath.string(), "horse-gallop-01.obj", camelPath.string(), "camel-gallop-reference.obj",  "correspondence-horse-camel.txt");
 
 
     glErr("after init");
