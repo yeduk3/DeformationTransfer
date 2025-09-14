@@ -1,4 +1,5 @@
 #include "error.hpp"
+#include "glm/ext/matrix_transform.hpp"
 #include <YGLWindow.hpp>
 #include <cmath>
 #include <fstream>
@@ -1049,6 +1050,7 @@ void render() {
     
     // cat render
     glm::mat4 M(1);
+    M = glm::rotate(glm::translate(glm::mat4(1), glm::vec3(-1.5, 0, 0)), PI/2.f, glm::vec3(0, 1, 0));
     glm::mat4 V = camera.lookAt();
     glm::mat4 P = camera.perspective(window->aspect(), 0.1f, 1000.f);
     glm::mat4 MV = V * M;
@@ -1065,6 +1067,7 @@ void render() {
 
     // lion render
     M = glm::mat4(1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,    0.3, 0, 0, 1);
+    M = glm::rotate(glm::translate(glm::mat4(1), glm::vec3(-0.5, 0, 0)), PI/2.f, glm::vec3(0, 1, 0));
     V = camera.lookAt();
     P = camera.perspective(window->aspect(), 0.1f, 1000.f);
     MV = V * M;
@@ -1078,6 +1081,7 @@ void render() {
 
     // src deformed
     M = glm::mat4(1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,    0.6, 0, 0, 1);
+    M = glm::rotate(glm::translate(glm::mat4(1), glm::vec3(0.5, 0, 0)), PI/2.f, glm::vec3(0, 1, 0));
     V = camera.lookAt();
     P = camera.perspective(window->aspect(), 0.1f, 1000.f);
     MV = V * M;
@@ -1091,6 +1095,7 @@ void render() {
 
     // tar deformed
     M = glm::mat4(1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,    0.9, 0, 0, 1);
+    M = glm::rotate(glm::translate(glm::mat4(1), glm::vec3(1.5, 0, 0)), PI/2.f, glm::vec3(0, 1, 0));
     V = camera.lookAt();
     P = camera.perspective(window->aspect(), 0.1f, 1000.f);
     MV = V * M;
