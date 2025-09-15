@@ -54,14 +54,9 @@ target_link_libraries(main PRIVATE
 # --- 리소스 복사 부분 수정 ---
 
 set(RESOURCE_DIR ${CMAKE_SOURCE_DIR}/resources)
-file(GLOB_RECURSE RESOURCE_FILES "${RESOURCE_DIR}/*")
 
-add_custom_target(copy_resources ALL
-    # 2. $<TARGET_FILE_DIR:main> 대신 위에서 지정한 변수를 사용합니다.
+add_custom_command(TARGET main POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${RESOURCE_DIR} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/resources
-    SOURCES ${RESOURCE_FILES}
-    COMMENT "Copying resources to build directory"
+            ${RESOURCE_DIR} $<TARGET_FILE_DIR:main>/resources
+    COMMENT "Copying resources to target directory"
 )
-
-add_dependencies(main copy_resources)

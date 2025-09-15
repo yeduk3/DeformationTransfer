@@ -1,4 +1,5 @@
 build
+xcodebuild
 .cache
 .DS_Store
 resources/cat-poses

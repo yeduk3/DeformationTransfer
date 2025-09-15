@@ -1035,8 +1035,8 @@ void init() {
 
     // prepareCorrespondence(catPath.string(), "cat-reference.obj", lionPath.string(), "lion-reference.obj", marker_CatLion, "correspondence-cat-lion.txt");
     // prepareCorrespondence(horsePath.string(), "horse-gallop-reference.obj", camelPath.string(), "camel-gallop-reference.obj", marker_HorseCamel, "correspondence-horse-camel.txt");
-    deformationTransfer(catPath.string(), "cat-reference.obj", catPath.string(), "cat-05.obj", lionPath.string(), "lion-reference.obj",  "correspondence-cat-lion.txt");
-    // deformationTransfer(horsePath.string(), "horse-gallop-reference.obj", horsePath.string(), "horse-gallop-01.obj", camelPath.string(), "camel-gallop-reference.obj",  "correspondence-horse-camel.txt");
+//    deformationTransfer(catPath.string(), "cat-reference.obj", catPath.string(), "cat-01.obj", lionPath.string(), "lion-reference.obj",  "correspondence-cat-lion.txt");
+     deformationTransfer(horsePath.string(), "horse-gallop-reference.obj", horsePath.string(), "horse-gallop-01.obj", camelPath.string(), "camel-gallop-reference.obj",  "correspondence-horse-camel.txt");
 
 
     glErr("after init");
