@@ -13,6 +13,16 @@
 
 ![Result_Sample](https://github.com/yeduk3/DeformationTransfer/blob/main/DeformationRes.png)
 
+Left to right,
+
+- Source original image(input)
+
+- Target original image(input)
+
+- Source deformed imgae(input)
+
+- Target deformed image(**result**)
+
 ## References
 
 - [Implementation 1](https://github.com/Golevka/deformation-transfer/tree/master)
